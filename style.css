@@ -3,8 +3,8 @@ body {
 }
 
 #canvas {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
 }
 
 .grid-container {
@@ -14,18 +14,12 @@ body {
     padding: 10px;
   }
 
-  .grid-item-row {
+  .grid-item {
     background-color: rgba(67, 160, 95, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
     font-size: 30px;
     text-align: center;
-  }
-
-  .grid-item-column {
-    background-color: rgba(54, 139, 196, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
+    height: 1%;
+    width: 1%;
   }
