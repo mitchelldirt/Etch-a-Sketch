@@ -1,32 +1,35 @@
-let divRow;
-let divColumn;
-let userInput;
-const inputBox = document.getElementById('userInput');
-const submitButton = document.getElementById('submitButton')
-submitButton.addEventListener('click', () => {
-    userInput = inputBox.innerText;
-    createGrid(userInput);
-})
-function createGrid(userInput) {
-    if (userInput != Number) {
-        alert('Please enter a number!');
-    } else if (userInput > 100) {
-        alert('Please no more than 100 :(');
+const form = document.getElementById('input');
+form.addEventListener('submit', () => {
+    const inputBox = parseInt(document.getElementById('userInput').value);
+    createGrid(inputBox);
+    return;
+});
+
+// Creates the grid that the grid-items will fit into.
+function createGrid(submittedNumber) {
+    // verifies that a number between 1 and 100 was entered. Breaks out of function if not the case and alerts user.
+    if (submittedNumber > 100 || submittedNumber < 1) {
+        alert('Please enter a valid number!');
+        return;
     }
+    // creates the actual grid layout with the .gridTemplateColumns/Rows property.
     let i = 1;
     const mainDiv = document.getElementById('canvas');
     mainDiv.style.gridTemplateColumns = 'repeat(i, 1fr)';
     mainDiv.style.gridTemplateRows = 'repeat(i, 1fr)';
-    for (i; i < userInput; i++) {
+    for (i; i < submittedNumber; i++) {
         mainDiv.style.gridColumnStart = i;
         mainDiv.style.gridColumnEnd = i;
         createColumn();
     }
-}
+};
 
+// creates each column. Puts a grid-item in each row of the column `i` and then iterates through to each column up to i.
 function createColumn() {
+    const inputBox = parseInt(document.getElementById('userInput').value);
     let i = 1;
-    for (i; i < userInput; i++) {
+    let submittedNumber = inputBox;
+    for (i; i < submittedNumber; i++) {
         const mainDiv = document.getElementById('canvas');
         gridItem = document.createElement('div');
         gridItem.classList.add(`divItem${i}`);
@@ -34,8 +37,5 @@ function createColumn() {
         gridItem.style.gridRowStart = i;
         gridItem.style.gridRowEnd = i;
         mainDiv.appendChild(gridItem);
-    } 
-}
-// create 16 columns with 16 rows in each
-
-// create separate for loop that adds 15 columns of divs to each `divrow${i}` and get rid of the createcolumn part of the above for loop
+    }
+};
