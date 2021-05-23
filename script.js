@@ -11,16 +11,20 @@ function createGrid(submittedNumber) {
     if (submittedNumber > 100 || submittedNumber < 1) {
         alert('Please enter a valid number!');
         return;
-    }
-    // creates the actual grid layout with the .gridTemplateColumns/Rows property.
-    let i = 1;
-    const mainDiv = document.getElementById('canvas');
-    mainDiv.style.gridTemplateColumns = 'repeat(i, 1fr)';
-    mainDiv.style.gridTemplateRows = 'repeat(i, 1fr)';
-    for (i; i < submittedNumber; i++) {
-        mainDiv.style.gridColumnStart = i;
-        mainDiv.style.gridColumnEnd = i;
-        createColumn();
+    } else if (submittedNumber === null || submittedNumber === NaN || submittedNumber === '' || submittedNumber === 0) {
+        alert('NOOOOOOOO');
+        return;
+    } else {
+        // creates the actual grid layout with the .gridTemplateColumns/Rows property.
+        let i = 1;
+        const mainDiv = document.getElementById('canvas');
+        mainDiv.style.gridTemplateColumns = 'repeat(i, 1fr)';
+        mainDiv.style.gridTemplateRows = 'repeat(i, 1fr)';
+        for (i; i < submittedNumber; i++) {
+            mainDiv.style.gridColumnStart = i;
+            mainDiv.style.gridColumnEnd = i;
+            createColumn();
+        }
     }
 };
 
@@ -38,4 +42,4 @@ function createColumn() {
         gridItem.style.gridRowEnd = i;
         mainDiv.appendChild(gridItem);
     }
-};
+}
