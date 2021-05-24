@@ -1,5 +1,20 @@
+let hasItBeenRan = 0
 const form = document.getElementById('input');
-form.addEventListener('submit', () => {
+const resetButton = document.getElementById('resetButton');
+
+resetButton.addEventListener('click', resetGrid);
+
+form.addEventListener('submit', (e) => {
+    // Prevents the submit button from refreshing the page.
+    e.preventDefault();
+
+    // checks if there already is a grid and then deletes it to make room for the new one if there is.
+    if (hasItBeenRan === 1) {
+        hasItBeenRan = 0;
+        resetGrid()
+    }
+
+    // Grabs the submitted number and uses that in the createGrid function.
     const inputBox = parseInt(document.getElementById('userInput').value);
     createGrid(inputBox);
     return;
@@ -12,11 +27,11 @@ function createGrid(submittedNumber) {
         alert('Please enter a valid number!');
         return;
     } else if (submittedNumber === null || submittedNumber === NaN || submittedNumber === '' || submittedNumber === 0) {
-        alert('NOOOOOOOO');
+        alert('NOOOOOOOO!');
         return;
     } else {
         // creates the actual grid layout with the .gridTemplateColumns/Rows property.
-        let i = 1;
+        let i = 0;
         const mainDiv = document.getElementById('canvas');
         mainDiv.style.gridTemplateColumns = 'repeat(i, 1fr)';
         mainDiv.style.gridTemplateRows = 'repeat(i, 1fr)';
@@ -25,13 +40,15 @@ function createGrid(submittedNumber) {
             mainDiv.style.gridColumnEnd = i;
             createColumn();
         }
+        // This is for verification in the event handler for the form variable. It lets the program know that the above has been ran before.
+        hasItBeenRan = 1;
     }
 };
 
 // creates each column. Puts a grid-item in each row of the column `i` and then iterates through to each column up to i.
 function createColumn() {
     const inputBox = parseInt(document.getElementById('userInput').value);
-    let i = 1;
+    let i = 0;
     let submittedNumber = inputBox;
     for (i; i < submittedNumber; i++) {
         const mainDiv = document.getElementById('canvas');
@@ -42,4 +59,10 @@ function createColumn() {
         gridItem.style.gridRowEnd = i;
         mainDiv.appendChild(gridItem);
     }
+}
+
+// resets the grid by removing all HTML from the mainDiv element with ID='canvas'.
+function resetGrid() {
+    const mainDiv = document.getElementById('canvas');
+    mainDiv.innerHTML = '';
 }

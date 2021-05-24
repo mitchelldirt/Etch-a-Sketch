@@ -1,10 +1,24 @@
+html,
 body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
   background-color: aqua;
 }
 
 #canvas {
   width: 100%;
-  height: 90%;
+  height: 84%;
+}
+
+#input {
+  height: 16%;
+  position: relative;
+  bottom: 2%;
+}
+
+#warning {
+  color: red;
 }
 
 .grid-container {
@@ -14,10 +28,14 @@ body {
 }
 
 .grid-item {
-  background-color: rgba(67, 160, 95, 0.8);
+  background-color: rgb(255, 255, 255);
   border: 1px solid rgba(0, 0, 0, 0.8);
   /* Below is used to make sure each grid-item fits into the container and no space is wasted */
   object-fit: fill;
   height: 100%;
   width: 100%;
+}
+
+.grid-item:hover {
+  background-color: black;
 }
