@@ -36,6 +36,11 @@ body {
   width: 100%;
 }
 
-.grid-item:hover {
-  background-color: black;
+.grid-item-hover {
+  background-color: rgb(0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  /* Below is used to make sure each grid-item fits into the container and no space is wasted */
+  object-fit: fill;
+  height: 100%;
+  width: 100%;
 }

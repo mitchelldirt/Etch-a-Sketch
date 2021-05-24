@@ -1,7 +1,7 @@
+
 let hasItBeenRan = 0
 const form = document.getElementById('input');
 const resetButton = document.getElementById('resetButton');
-
 resetButton.addEventListener('click', resetGrid);
 
 form.addEventListener('submit', (e) => {
@@ -57,6 +57,7 @@ function createColumn() {
         gridItem.classList.add('grid-item');
         gridItem.style.gridRowStart = i;
         gridItem.style.gridRowEnd = i;
+        gridItem.addEventListener('mouseover', changeBackgroundColor);
         mainDiv.appendChild(gridItem);
     }
 }
@@ -66,3 +67,14 @@ function resetGrid() {
     const mainDiv = document.getElementById('canvas');
     mainDiv.innerHTML = '';
 }
+
+function changeBackgroundColor(e) {
+    const randomRed = Math.floor(Math.random() * 256);
+    const randomGreen = Math.floor(Math.random() * 256);
+    const randomBlue = Math.floor(Math.random() * 256);
+    e.target.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+}
+
+document.addEventListener('readystatechange', () => {
+    if (document.readyState == 'complete') createGrid(16);
+});
