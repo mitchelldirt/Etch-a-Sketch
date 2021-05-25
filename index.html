@@ -7,16 +7,20 @@
     <title>Etch-A-Sketch</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-<div id="canvas" class="grid-container">
 
-</div>
-<form id="input">
-    <h1>Enter a number between 1-100 to create a grid!</h1>
-    <h2 id='warning'><strong>Might crash at higher numbers depending on device power :(</strong></h2>
-    <input id="userInput" type="number">
-    <button id="submitButton" type="submit">submit</button>
-    <button id="resetButton" type="reset">reset</button>
-</form>
+<body>
+    <section id="canvas-container">
+        <div id="canvas" class="grid-container">
+
+        </div>
+    </section>
+    <form id="input">
+        <h1>Enter a number between 1-100 to create a grid!</h1>
+        <h2 id='warning'><strong>Might crash at higher numbers depending on computer power :(</strong></h2>
+        <input id="userInput" type="number">
+        <button id="submitButton" type="submit">submit</button>
+        <button id="resetButton" type="reset">reset</button>
+    </form>
 </body>
 
 <script src="./script.js"></script>

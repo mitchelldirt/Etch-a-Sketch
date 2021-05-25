@@ -3,6 +3,8 @@ let hasItBeenRan = 0
 const form = document.getElementById('input');
 const resetButton = document.getElementById('resetButton');
 resetButton.addEventListener('click', resetGrid);
+let defaultGrid = 16;
+createGrid(defaultGrid);
 
 form.addEventListener('submit', (e) => {
     // Prevents the submit button from refreshing the page.
@@ -74,7 +76,3 @@ function changeBackgroundColor(e) {
     const randomBlue = Math.floor(Math.random() * 256);
     e.target.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
 }
-
-document.addEventListener('readystatechange', () => {
-    if (document.readyState == 'complete') createGrid(16);
-});
