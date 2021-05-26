@@ -7,21 +7,40 @@
     <title>Etch-A-Sketch</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+<header>
+    <h1>
+        <center>
+            Etch-A-Sketch
+        </center>
+    </h1>
+</header>
 
-<body>
+<body id="body">
+
     <section id="canvas-container">
         <div id="canvas" class="grid-container">
 
         </div>
     </section>
     <form id="input">
-        <h1>Enter a number between 1-100 to create a grid!</h1>
-        <h2 id='warning'><strong>Might crash at higher numbers depending on computer power :(</strong></h2>
-        <input id="userInput" type="number">
-        <button id="submitButton" type="submit">submit</button>
-        <button id="resetButton" type="reset">reset</button>
+        <center>
+            <h2>Enter a number between 1-100 to create a grid!</h2>
+            <div class="slidecontainer">
+                <input id="userInput" type="range" min="1" max="100" value="16" class="slider" id="myRange">
+            </div>
+            <button class="glow-on-hover" id="submitButton" type="submit">submit</button>
+            <button class="glow-on-hover" id="resetButton" type="reset">reset</button>
+        </center>
     </form>
 </body>
+<footer>
+    <center>
+        <p>Created By: Mitchell Mudd</p>
+    </center>
+    <center>
+        <p>Project By: The Odin Project</p>
+    </center>
+</footer>
 
 <script src="./script.js"></script>
 

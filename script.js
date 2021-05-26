@@ -3,8 +3,15 @@ let hasItBeenRan = 0
 const form = document.getElementById('input');
 const resetButton = document.getElementById('resetButton');
 resetButton.addEventListener('click', resetGrid);
-let defaultGrid = 16;
-createGrid(defaultGrid);
+window.onload = defaultGrid();
+
+
+// Makes sure the page starts with a 16 x16
+function defaultGrid() {
+    const sliderBar = document.getElementById('userInput');
+    sliderBar.value = 16;
+    createGrid(16);
+}
 
 form.addEventListener('submit', (e) => {
     // Prevents the submit button from refreshing the page.
