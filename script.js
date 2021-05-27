@@ -2,7 +2,8 @@
 let hasItBeenRan = 0
 const form = document.getElementById('input');
 const resetButton = document.getElementById('resetButton');
-resetButton.addEventListener('click', resetGrid);
+resetButton.addEventListener('click', defaultGrid);
+
 window.addEventListener("load", defaultGrid);
 
 
@@ -20,7 +21,8 @@ form.addEventListener('submit', (e) => {
     // checks if there already is a grid and then deletes it to make room for the new one if there is.
     if (hasItBeenRan === 1) {
         hasItBeenRan = 0;
-        resetGrid()
+        // clearGrid simply clears the grid to make space for a new one.
+        clearGrid()
     }
 
     // Grabs the submitted number and uses that in the createGrid function.
@@ -32,11 +34,7 @@ form.addEventListener('submit', (e) => {
 // Creates the grid that the grid-items will fit into.
 function createGrid(submittedNumber) {
     // verifies that a number between 1 and 100 was entered. Breaks out of function if not the case and alerts user.
-    if (submittedNumber === 1) {
-        createColumn();
-        return;
-    }
-    else if (submittedNumber > 100 || submittedNumber < 1) {
+    if (submittedNumber > 100 || submittedNumber < 1) {
         alert('Please enter a valid number!');
         return;
     } else if (submittedNumber === null || submittedNumber === NaN || submittedNumber === '' || submittedNumber === 0) {
@@ -75,8 +73,8 @@ function createColumn() {
     }
 }
 
-// resets the grid by removing all HTML from the mainDiv element with ID='canvas'.
-function resetGrid() {
+// resets the grid by removing all HTML from the mainDiv element with ID='canvas'. Useful for making sure the grid doesn't break.
+function clearGrid() {
     const mainDiv = document.getElementById('canvas');
     mainDiv.innerHTML = '';
 }
