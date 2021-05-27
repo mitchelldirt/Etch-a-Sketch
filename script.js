@@ -3,10 +3,10 @@ let hasItBeenRan = 0
 const form = document.getElementById('input');
 const resetButton = document.getElementById('resetButton');
 resetButton.addEventListener('click', resetGrid);
-window.onload = defaultGrid();
+window.addEventListener("load", defaultGrid);
 
 
-// Makes sure the page starts with a 16 x16
+// Makes sure the page starts with as 16 x16
 function defaultGrid() {
     const sliderBar = document.getElementById('userInput');
     sliderBar.value = 16;
@@ -32,7 +32,11 @@ form.addEventListener('submit', (e) => {
 // Creates the grid that the grid-items will fit into.
 function createGrid(submittedNumber) {
     // verifies that a number between 1 and 100 was entered. Breaks out of function if not the case and alerts user.
-    if (submittedNumber > 100 || submittedNumber < 1) {
+    if (submittedNumber === 1) {
+        createColumn();
+        return;
+    }
+    else if (submittedNumber > 100 || submittedNumber < 1) {
         alert('Please enter a valid number!');
         return;
     } else if (submittedNumber === null || submittedNumber === NaN || submittedNumber === '' || submittedNumber === 0) {
@@ -42,8 +46,8 @@ function createGrid(submittedNumber) {
         // creates the actual grid layout with the .gridTemplateColumns/Rows property.
         let i = 0;
         const mainDiv = document.getElementById('canvas');
-        mainDiv.style.gridTemplateColumns = 'repeat(i, 1fr)';
-        mainDiv.style.gridTemplateRows = 'repeat(i, 1fr)';
+        mainDiv.style.gridTemplateColumns = 'repeat(submittedNumber, auto)';
+        mainDiv.style.gridTemplateRows = 'repeat(submittedNumber, auto)';
         for (i; i < submittedNumber; i++) {
             mainDiv.style.gridColumnStart = i;
             mainDiv.style.gridColumnEnd = i;
