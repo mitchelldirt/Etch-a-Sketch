@@ -267,6 +267,10 @@ button {
     font-size: 4em;
   }
 
+  #canvas-container {
+    margin-top: 5%;
+  }
+
   #canvas {
     width: 600px;
     height: 600px;
@@ -287,6 +291,7 @@ button {
 
   footer {
     margin-bottom: 5%;
+    margin-top: 10%;
   }
 
   button {
